@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculadora_IMC.CalculadoraIMC"
+             Title="CalculadoraIMC">
+    <!--ScrollView esto nos permite deslizar si el teclado parte de la pantalla-->
+    <ScrollView>
+        <!-- VerticalStackLayout: apila los controles uno debajo del otro-->
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+            <Label Text="Calculadora IMC" FontSize="24" FontAttributes="Bold, Italic" 
+                   TextColor="#0ED9F0" HorizontalOptions="Center"/>
+            
+            <!-- Campo para agregar el peso -->
+            <Label Text="Peso (KG)" FontAttributes="Bold, Italic"/>
+            
+            <!--Border: dibuja un marco con esquinas redondiadas alrededor del Entry-->
+            <Border Stroke="Crimson" StrokeShape="RoundRectangle 8" Padding="5,0">
+                
+                <!-- x: Name: El Nombre con el que C# encuentra este control (txtPeso.texto)-->
+                <!-- Keyboard = "Numeric" : en la pantalla nos muestra numeros-->
+                <Entry x:Name="txtPeso" Placeholder="Ejemplo: 70.5" Keyboard="Numeric"/>
+            
+            </Border>
+
+            <!-- Campo para agregar la altura -->
+            <Label Text="Altura (Metros)" FontAttributes="Bold, Italic"/>
+
+            <!--Border: dibuja un marco con esquinas redondiadas alrededor del Entry-->
+            <Border Stroke="Blue" StrokeShape="RoundRectangle 8" Padding="5,0">
+
+                <Entry x:Name="txtAltura" Placeholder="Ejemplo: 70.5" Keyboard="Numeric"/>
+
+            </Border>
+            
+            <!-- Boton: Cliked = "...." indica que metodo en C# se eejecuta al tocarlo -->
+            <Button Text="Calcular IMC" BackgroundColor="DarkTurquoise" TextColor="WhiteSmoke"
+                    FontAttributes="Bold, Italic" CornerRadius="8" HeightRequest="48" Clicked="Button_Clicked"/>
+            
+            
+            <!-- Tabla de Pesos segun IMC -->
+            <Border Stroke="#3A3A3A" 
+        StrokeThickness="1" 
+        StrokeShape="RoundRectangle 10" 
+        BackgroundColor="#2D2D2D"
+        HorizontalOptions="Center" 
+        VerticalOptions="Center"
+        Margin="15">
+                <Grid RowSpacing="1" ColumnSpacing="1" BackgroundColor="#3A3A3A">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Encabezado de la tabla -->
+                    <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#252525" Padding="10" Stroke="Transparent">
+                        <Label Text="Categoría" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" />
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#252525" Padding="10" Stroke="Transparent">
+                        <Label Text="IMC" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" />
+                    </Border>
+
+                    <!-- Fila 1: Bajo peso (Tono azulado suave adaptado a oscuro) -->
+                    <Border Grid.Row="1" Grid.Column="0" BackgroundColor="#1A3B5C" Padding="10" Stroke="Transparent">
+                        <Label Text="Bajo peso" TextColor="#E0F2FE" />
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#1A3B5C" Padding="10" Stroke="Transparent">
+                        <Label Text="Menos de 18.5" TextColor="#E0F2FE" HorizontalTextAlignment="Center" />
+                    </Border>
+
+                    <!-- Fila 2: Peso normal (Tono verdoso suave) -->
+                    <Border Grid.Row="2" Grid.Column="0" BackgroundColor="#143628" Padding="10" Stroke="Transparent">
+                        <Label Text="Normal (Saludable)" TextColor="#DCFCE7" />
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="1" BackgroundColor="#143628" Padding="10" Stroke="Transparent">
+                        <Label Text="18.5 - 24.9" TextColor="#DCFCE7" HorizontalTextAlignment="Center" />
+                    </Border>
+
+                    <!-- Fila 3: Sobrepeso (Tono ámbar/amarillento suave) -->
+                    <Border Grid.Row="3" Grid.Column="0" BackgroundColor="#452E11" Padding="10" Stroke="Transparent">
+                        <Label Text="Sobrepeso" TextColor="#FEF3C7" />
+                    </Border>
+                    <Border Grid.Row="3" Grid.Column="1" BackgroundColor="#452E11" Padding="10" Stroke="Transparent">
+                        <Label Text="25.0 - 29.9" TextColor="#FEF3C7" HorizontalTextAlignment="Center" />
+                    </Border>
+
+                    <!-- Fila 4: Obesidad (Tono rojizo suave) -->
+                    <Border Grid.Row="4" Grid.Column="0" BackgroundColor="#4A1D1D" Padding="10" Stroke="Transparent">
+                        <Label Text="Obesidad" TextColor="#FEE2E2" />
+                    </Border>
+                    <Border Grid.Row="4" Grid.Column="1" BackgroundColor="#4A1D1D" Padding="10" Stroke="Transparent">
+                        <Label Text="30.0 o más" TextColor="#FEE2E2" HorizontalTextAlignment="Center" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Targeta de resultado: IsVisible = False la oculta hasta que se calcule -->
+            <Border x:Name="brResulustado" StrokeShape="RoundRectangle 12" Padding="20" 
+                    IsVisible="False" Margin="0, 10, 0, 0">
+                <VerticalStackLayout>
+                    <Label x:Name="lblValorIMC"  FontSize="32" FontAttributes="Bold,Italic"
+                           HorizontalOptions="Center"/>
+                    <Label x:Name="lblDiacnostico" FontSize="16" FontAttributes="Bold,Italic"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>
