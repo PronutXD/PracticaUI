@@ -11,7 +11,8 @@ namespace Calculadora_IMC
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new CalculadoraIMC());
+            // Envolvemos MainPage en un NavigationPage para habilitar el PushAsync
+            return new Window(new NavigationPage(new MainPage()));
         }
     }
 }

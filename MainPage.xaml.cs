@@ -1,24 +1,19 @@
-﻿namespace Calculadora_IMC
+﻿namespace Calculadora_IMC;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
+    }
 
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+    private async void OnIrIMCClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalculadoraIMC());
+    }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            /*count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);*/
-        }
+    private async void OnIrDivisasClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ConversorMoneda());
     }
 }

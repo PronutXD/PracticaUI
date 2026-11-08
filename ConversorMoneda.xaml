@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculadora_IMC.ConversorMoneda"
+             Title="ConversorMoneda">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Conversor de Moneda" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+            <!-- Aqui el Usuario escrive el monto que quiere convertir -->
+            <Entry x:Name="txtMonto" FontSize="15" Placeholder="Monto a convertir" Keyboard="Numeric"/>
+
+            <!-- Aqui el Usuario puede seleccionar en cual se convierte-->
+            <Label Text="Moneda de Origen:"/>
+            <Picker x:Name="pckOrigen" Title="Selecione Origen" SelectedIndex="0">
+                <Picker.Items>
+                    <x:String>HNL (Lempiras)</x:String>
+                    <x:String>USD (Dolares)</x:String>
+                    <x:String>EUR (Euros)</x:String>
+                    <x:String>MXN (Pesos)</x:String>
+                </Picker.Items>
+            </Picker>
+
+
+            <!-- Seleccion destino -->
+            <Label Text="Moneda de Destino:"/>
+            <Picker x:Name="pckDestino" Title="Selecione Destino" >
+                <Picker.Items>
+                    <x:String>HNL (Lempiras)</x:String>
+                    <x:String>USD (Dolares)</x:String>
+                    <x:String>EUR (Euros)</x:String>
+                    <x:String>MXN (Pesos)</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Boton -->
+            <Button Text="Convertir" Clicked="onConvertirCliked"
+            BackgroundColor="#0D9488" TextColor="WhiteSmoke"/>
+
+
+            <!-- Resultado -->
+            <Border StrokeShape="RoundRectangle 8">
+                <Label x:Name="lblResultado" Text="0.00" TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"
+           VerticalOptions="Center" Margin="0,15,0,0"/>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
