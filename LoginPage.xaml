@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculadora_IMC.LoginPage"
+             Title="Login">
+    <VerticalStackLayout Padding="30" Spacing="15" VerticalOptions="Center">
+
+        <Label Text="Iniciar sesión"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Entry x:Name="UsuarioEntry"
+               Placeholder="Usuario"
+               Keyboard="Email" />
+
+        <Entry x:Name="PasswordEntry"
+               Placeholder="Contraseña"
+               IsPassword="True" />
+
+        <Label x:Name="ErrorLabel"
+               TextColor="Red"
+               IsVisible="False"
+               HorizontalOptions="Center" />
+
+        <Button Text="Entrar"
+                Clicked="OnLoginClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>
